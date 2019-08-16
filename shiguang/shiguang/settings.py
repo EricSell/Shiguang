@@ -36,17 +36,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.apps.AppConfig',
+
+    'index',
+    'find1',
+    'find2',
+    'article',
+    'mine',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 自定义中间件
 ]
 
 ROOT_URLCONF = 'shiguang.urls'
@@ -137,4 +143,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads/')
 #         'KEY_PREFIX': 'QF',  # 前缀
 #     }
 # }
-

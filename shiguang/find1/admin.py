@@ -1,18 +1,11 @@
 from django.contrib import admin
-from .models import *
 
 
-# 文章管理
-@admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'name', 'time', 'user']
-    list_per_page = 10  # 每页显示的数量
-    ordering = ('-time',)  # 排序
-    list_editable = ['title', 'user']  # 可编辑的
-    search_fields = ['title']  # 可搜索的
-
-
+# Register your models here.
 # 百科管理
+from find1.models import *
+
+
 @admin.register(Baike)
 class BaikeAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'user']
@@ -28,15 +21,6 @@ class BaikeShowLikeAdmin(admin.ModelAdmin):
     list_per_page = 10
     list_editable = ['love', 'collect']
     search_fields = ['user', 'baike']
-
-
-# 用户关注表
-@admin.register(Follow)
-class FollowAdmin(admin.ModelAdmin):
-    list_display = ['id', 'myid', 'yid']
-    list_per_page = 10
-    list_editable = ['myid', 'yid']
-    search_fields = ['myid', 'yid']
 
 
 # 饮食类型管理
@@ -99,12 +83,3 @@ class ThemeAdmin(admin.ModelAdmin):
     list_editable = ['menu']
     list_per_page = 10
     search_fields = ['name', 'menu']
-
-
-# 用户管理
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['id', 'username', 'email', 'phone']
-    list_per_page = 10
-    list_editable = ['username']
-    search_fields = ['username', 'email', 'phone']
