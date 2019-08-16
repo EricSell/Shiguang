@@ -3,15 +3,52 @@
   <component name="ChangeListManager">
     <list default="true" id="f99d75dc-f706-4f93-ad26-2a755c6312e7" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find1/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find1/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find1/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find1/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find1/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find1/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/find2/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/WCmiddleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mine/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/find1/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/find1/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/find1/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shiguang/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/shiguang/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shiguang/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shiguang/urls.py" afterDir="false" />
     </list>
@@ -97,7 +134,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
     <option name="width" value="979" />
     <option name="height" value="1040" />
@@ -215,12 +252,12 @@
       <option name="presentableId" value="Default" />
       <updated>1565875282852</updated>
       <workItem from="1565875284054" duration="34000" />
-      <workItem from="1565933542471" duration="1201000" />
+      <workItem from="1565933542471" duration="1444000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1235000" />
+    <option name="totallyTimeSpent" value="1478000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
