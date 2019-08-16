@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+
+from shiguang import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +28,6 @@ urlpatterns = [
     path("article/", include("article.urls", namespace="article")),
     path("mine/", include("mine.urls", namespace="mine")),
 ]
+
+# 部署的时候收集静态文件
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
