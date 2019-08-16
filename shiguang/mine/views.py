@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return HttpResponse("OK!")
+    return JsonResponse({"code": 1, "msg": '测试成功'})
