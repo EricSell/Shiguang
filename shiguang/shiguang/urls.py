@@ -30,4 +30,4 @@ urlpatterns = [
 ]
 
 # 部署的时候收集静态文件
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

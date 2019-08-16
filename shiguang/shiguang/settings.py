@@ -129,8 +129,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
-
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
+# 收集静态文件使用
+# STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 # 媒体文件配置
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads/')
