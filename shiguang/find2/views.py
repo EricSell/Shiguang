@@ -155,6 +155,10 @@ def baike_detail_collect(request):
                     baikeshoulike.user_id = userid
                     baikeshoulike.baike_id = baikeid
                     baikeshoulike.save()
+                    return JsonResponse({
+                        'code': 1001,
+                        'msg': '添加数据成功',
+                    })
             else:
                 return JsonResponse({
                     'code': 1002,
