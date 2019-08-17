@@ -3,13 +3,14 @@ from django.db import models
 
 # Create your models here.
 # 百科表
+from mdeditor.fields import MDTextField
+
 from index.models import User
 
 
 class Baike(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name="百科名")
-    content = models.TextField(verbose_name="内容")
+    content = MDTextField(verbose_name="内容")
     user = models.ForeignKey(User, models.DO_NOTHING, verbose_name="用户")
 
     class Meta:
@@ -23,7 +24,6 @@ class Baike(models.Model):
 
 # 百科喜欢收藏表
 class BaikeShowLike(models.Model):
-    id = models.IntegerField(primary_key=True)
     user = models.ForeignKey(User, models.DO_NOTHING, verbose_name="用户")
     baike = models.ForeignKey(Baike, models.DO_NOTHING, verbose_name="百科")
     love = models.BooleanField(default=False, verbose_name="喜欢")
@@ -37,7 +37,6 @@ class BaikeShowLike(models.Model):
 
 # 饮食类型
 class Foodtype(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name="饮食分类名")
     menu = models.ForeignKey('Menu', models.DO_NOTHING, verbose_name="菜谱")
 
@@ -52,12 +51,11 @@ class Foodtype(models.Model):
 
 # 菜谱
 class Menu(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=30, verbose_name="菜谱名")
-    content = models.TextField(verbose_name="内容")
+    content = MDTextField(verbose_name="内容")
     descript = models.CharField(max_length=200, verbose_name="描述")
     img = models.CharField(max_length=255, blank=True, null=True, verbose_name="图片")
-    time = models.TimeField(auto_created=True, verbose_name="时间")
+    time = models.TimeField(auto_now_add=True, verbose_name="时间")
     user = models.ForeignKey(User, models.DO_NOTHING, verbose_name="发表人")
     type = models.ForeignKey('Menutype', models.DO_NOTHING, verbose_name="菜谱类型")
 
@@ -72,7 +70,6 @@ class Menu(models.Model):
 
 # 菜谱喜欢收藏表
 class MenuShouLike(models.Model):
-    id = models.IntegerField(primary_key=True)
     user = models.ForeignKey(User, models.DO_NOTHING, verbose_name="用户")
     menu = models.ForeignKey(Menu, models.DO_NOTHING, verbose_name="菜谱")
     love = models.BooleanField(default=False, verbose_name="喜欢")
@@ -86,7 +83,6 @@ class MenuShouLike(models.Model):
 
 # 菜谱类型
 class Menutype(models.Model):
-    id = models.IntegerField(primary_key=True)
     typename = models.CharField(max_length=20, verbose_name="菜谱分类")
 
     class Meta:
@@ -100,7 +96,6 @@ class Menutype(models.Model):
 
 # 其他分类
 class Other(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name="其他分类名")
     menu = models.ForeignKey(Menu, models.DO_NOTHING, verbose_name="菜谱")
 
@@ -115,7 +110,6 @@ class Other(models.Model):
 
 # 食材
 class Shicai(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name="食材分类名")
     menu = models.ForeignKey(Menu, models.DO_NOTHING, verbose_name="菜谱")
 
@@ -130,7 +124,6 @@ class Shicai(models.Model):
 
 # 主题
 class Theme(models.Model):
-    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20, verbose_name="主题分类名")
     menu = models.ForeignKey(Menu, models.DO_NOTHING, verbose_name="菜谱")
 

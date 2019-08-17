@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'bz=$6j&9(dk2chz8fyez@15_vp0+6@cszdmlc6=2d*vkq=+^z0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'find2',
     'article',
     'mine',
+
+    'mdeditor',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +135,9 @@ STATICFILES_DIRS = [
 # STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 # 媒体文件配置
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads')
+
 
 # CACHE 缓存配置（用的时候解开就行）
 # CACHES = {

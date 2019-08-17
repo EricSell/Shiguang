@@ -6,7 +6,6 @@ from django.db import models
 
 # 用户表
 class User(models.Model):
-    id = models.IntegerField(primary_key=True)
     username = models.CharField(max_length=20, verbose_name="昵称")
     password = models.CharField(max_length=20, verbose_name="密码")
     email = models.CharField(max_length=50, unique=True, verbose_name="邮箱")
@@ -26,7 +25,6 @@ class User(models.Model):
 
 # 关注表
 class Follow(models.Model):
-    id = models.IntegerField(primary_key=True)
     myid = models.ForeignKey(User, models.DO_NOTHING, related_name="myid")
     yid = models.ForeignKey(User, models.DO_NOTHING, related_name="yid")
 

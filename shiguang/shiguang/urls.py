@@ -14,10 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf.urls.static import static
-
-from shiguang import settings
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +26,12 @@ urlpatterns = [
     path("find2/", include("find2.urls", namespace="find2")),
     path("article/", include("article.urls", namespace="article")),
     path("mine/", include("mine.urls", namespace="mine")),
+    re_path(r'mdeditor/', include('mdeditor.urls')),
 ]
 
 # 部署的时候收集静态文件
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
