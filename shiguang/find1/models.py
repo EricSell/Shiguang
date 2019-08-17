@@ -11,6 +11,7 @@ from index.models import User
 class Baike(models.Model):
     name = models.CharField(max_length=20, verbose_name="百科名")
     content = MDTextField(verbose_name="内容")
+    img = models.CharField(max_length=255, verbose_name="百科图片", default="")
     user = models.ForeignKey(User, models.DO_NOTHING, verbose_name="用户")
 
     class Meta:

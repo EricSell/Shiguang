@@ -11,7 +11,7 @@ from index.models import User
 class Article(models.Model):
     title = models.CharField(max_length=30, verbose_name="标题")
     descript = models.CharField(max_length=200, verbose_name="简介")
-    name = models.CharField(max_length=20, verbose_name="文章名字")
+    img = models.CharField(max_length=255, verbose_name="文章图片")
     content = MDTextField(blank=True, null=True, verbose_name="内容")
     time = models.TimeField(auto_now_add=True, verbose_name="时间")
     user = models.ForeignKey(User, models.DO_NOTHING, verbose_name="作者")
@@ -22,7 +22,7 @@ class Article(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 # 文章喜欢表
