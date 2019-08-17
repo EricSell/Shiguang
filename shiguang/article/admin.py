@@ -7,8 +7,13 @@ from article.models import *
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'name', 'time', 'user']
+    list_display = ['id', 'title', 'time', 'user']
     list_per_page = 10  # 每页显示的数量
     ordering = ('-time',)  # 排序
     list_editable = ['title', 'user']  # 可编辑的
     search_fields = ['title']  # 可搜索的
+
+
+@admin.register(ArticleLike)
+class ArticleLikeAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'article']
