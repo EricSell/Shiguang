@@ -18,6 +18,8 @@ from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from django.conf import settings
 
+from shiguang import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -26,6 +28,9 @@ urlpatterns = [
     path("find2/", include("find2.urls", namespace="find2")),
     path("article/", include("article.urls", namespace="article")),
     path("mine/", include("mine.urls", namespace="mine")),
+
+    path("", views.index),
+
     re_path(r'mdeditor/', include('mdeditor.urls')),
 ]
 

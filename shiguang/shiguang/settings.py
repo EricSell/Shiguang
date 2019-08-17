@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 自定义中间件
+    "middleware.UserMiddleware.LoginMiddleware",
 ]
 
 ROOT_URLCONF = 'shiguang.urls'
