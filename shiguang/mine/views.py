@@ -11,6 +11,7 @@ def mine(request):
 
     if user:
         menu_list = list(Menu.objects.filter(user=user).values("name", 'img'))
+        print(Menu.objects.filter(user=user).first().img)
         like_list = list(Menu.objects.filter(menushoulike__love=True, user=user).values("name", 'img'))
         data = {
             "code": 1,
@@ -46,13 +47,10 @@ def change_mine_info(request):
         intro = request.POST.get("intro")
 
         icon = request.FILES.get("icon")
-        print(icon)
         # 图片上传到云服务器
         try:
-
             user = request.user
             status, url_icon = upload_to_ali(icon)
-
             if status == 200:
                 user.username = username
                 user.email = email
@@ -69,4 +67,5 @@ def change_mine_info(request):
                 }
                 return JsonResponse(data)
         except:
-            return JsonResponse({"code": -1, "msg": "fail"})
+            return JsonResponse({"code": -1, "msg": "修改失败"})
+    return JsonResponse({"code": -1, "msg": "请求方式错误"})

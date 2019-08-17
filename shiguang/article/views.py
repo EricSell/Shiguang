@@ -46,3 +46,4 @@ def article_detail(request):
             }
         }
         return JsonResponse(data)
+    return JsonResponse({"code": "-1", "msg": "没有找到数据"})
