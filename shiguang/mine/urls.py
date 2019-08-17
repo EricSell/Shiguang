@@ -4,5 +4,6 @@ from mine import views
 app_name = 'mine'
 urlpatterns = [
 
-    path("index/", views.mine_info)
+    path("mine/", views.mine),
+    path("changemineinfo/", views.change_mine_info)
 ]
