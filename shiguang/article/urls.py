@@ -7,4 +7,5 @@ urlpatterns = [
 
     path("article_list/", views.article_list),
     path("article_detail/", views.article_detail),
+    path("articlelike/", views.article_like),
 ]
