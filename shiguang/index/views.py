@@ -212,11 +212,11 @@ def login_mail_captcha(request):
             })
         email = request.POST.get('email')
         cache_captcha = cache.get(email, 0)
-        user = User.object.filter(email=email).first()
+        user = User.objects.filter(email=email).first()
         if not user:
             return JsonResponse({"code":1004, "msg": "用户未注册"})
         if int(captcha) == int(cache_captcha):
-            request.sesseion['user_id'] = user.id
+            request.session['user_id'] = user.id
             return JsonResponse({
                 'code': 1,
                 'msg': 'success',

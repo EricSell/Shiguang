@@ -1,3 +1,4 @@
+from django.core.serializers import serialize
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
@@ -5,7 +6,15 @@ from find1.models import *
 
 
 def menutype_list(request):
-    mtype_list = list(Menutype.objects.all().values("id", "typename", 'menu__img'))
+    # mtype_list1 = Menutype.objects.all()
+    mtype_list = list(Menutype.objects.all().values("id", "typename"))
+    for i in mtype_list:
+        m = Menu.objects.filter(type_id=i['id']).first()
+        if m:
+            i.update({"img": m.img})
+        else:
+            i.update({
+                         "img": "https://wc-blog.oss-cn-beijing.aliyuncs.com/shiguang/u%3D2161734677%2C3732758008%26fm%3D26%26gp%3D0.jpg"})
     data = {
         "code": 1,
         "msg": "success",
@@ -39,4 +48,3 @@ def baike_list(request):
         "data": b_list
     }
     return JsonResponse(data)
-

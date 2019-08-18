@@ -10,11 +10,11 @@ def index(request):
                 "msg": "用户个人信息及菜谱"
             },
             {
-                "url": ip + "/mine/minechangeinfo",
+                "url": ip + "/mine/changemineinfo/",
                 "msg": "编辑个人信息"
             },
             {
-                "url": ip + "/article/article_list",
+                "url": ip + "/article/article_list/",
                 "msg": "文章列表"
             },
             {
@@ -34,7 +34,7 @@ def index(request):
                 "msg": "菜谱分类列表"
             },
             {
-                "url": ip + "/find1/baike_list/",
+                "url": ip + "/find1/baikelist/",
                 "msg": "百科列表"
             },
             {
@@ -77,7 +77,14 @@ def index(request):
                 "url": ip + "/index/login_mail_captcha/",
                 "msg": "邮箱验证码登录"
             },
-
+            {
+                "url": ip + "/index/login/",
+                "msg": "密码登录"
+            },
+            {
+                "url": ip + "/index/register/",
+                "msg": "注册"
+            },
 
         ]
     }

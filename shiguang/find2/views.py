@@ -15,17 +15,16 @@ def baike_detail(request):
             collect_sum = baike_love_coll_sum.filter(collect=True).count()
 
         # 用户是否关注
-        # user = request.user
-        # userid = user.id
-        userid = 4
+        user = request.user
+        userid = user.id
+        # userid = 4
+        user_love = 0
+        user_collect = 0
         if userid:
             user = BaikeShowLike.objects.filter(user_id=userid)
             if user:
                 user_love = int(user.first().love)
                 user_collect = int(user.first().collect)
-            else:
-                user_love = 0
-                user_collect = 0
 
         # 获取百科详情
         baikes = Baike.objects.filter(id=baikeid)
@@ -67,13 +66,21 @@ def baike_detail(request):
 def baike_detail_love(request):
     if request.method == "GET":
 
-        # user = request.user
-        user = 1
+        user = request.user
+        print(user)
+        # user = 1
         baikeid = request.GET.get('baikeid')
+        try:
+            baikeid=int(baikeid)
+        except:
+            return JsonResponse({
+                'code': 1001,
+                'msg': '参数错误',
+            })
         if user:
             if Baike.objects.filter(id=baikeid).first():
-                # userid = user.id
-                userid = 1
+                userid = user.id
+                # userid = 1
                 is_love = BaikeShowLike.objects.filter(user_id=userid, baike_id=baikeid, love=True).first()
                 love = BaikeShowLike.objects.filter(user_id=userid, baike_id=baikeid)
                 if love.exists():
@@ -125,13 +132,20 @@ def baike_detail_love(request):
 def baike_detail_collect(request):
     if request.method == "GET":
 
-        # user = request.user
-        user = 1
+        user = request.user
+        # user = 1
         baikeid = request.GET.get('baikeid')
+        try:
+            baikeid = int(baikeid)
+        except:
+            return JsonResponse({
+                'code': 1001,
+                'msg': '参数错误',
+            })
         if user:
             if Baike.objects.filter(id=baikeid).first():
-                # userid = user.id
-                userid = 1
+                userid = user.id
+                # userid = 1
                 is_collect = BaikeShowLike.objects.filter(user_id=userid, baike_id=baikeid, collect=True).first()
                 collect = BaikeShowLike.objects.filter(user_id=userid, baike_id=baikeid)
                 if collect.exists():
@@ -290,8 +304,8 @@ def user_detail(request):
 def user_detail_follow(request):
     if request.method == "GET":
 
-        # user = request.user
-        user = 1
+        user = request.user
+        # user = 1
         if user:
             otherid = request.GET.get('otherid')
             try:
@@ -302,8 +316,8 @@ def user_detail_follow(request):
                     'msg': '参数错误',
                 })
             if User.objects.filter(id=otherid).first():
-                # userid = user.id
-                userid = 1
+                userid = user.id
+                # userid = 1
                 flag = 0
                 follow = Follow.objects.filter(myid_id=userid, yid_id=otherid).first()
                 if follow:
