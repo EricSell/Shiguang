@@ -1,11 +1,13 @@
 import os
 
 from django.contrib.auth.hashers import make_password, check_password
+from django.core.cache import cache
 from django.http import HttpResponse, JsonResponse
 
 # 主页
 from find1.models import *
 from index.models import *
+from utils.mail import send_email
 
 '''
 def index(request):
@@ -164,13 +166,67 @@ def logout(request):
 
 
 # 通过邮箱登录
-def login_for_email(request):
-    pass
+def login_send_email(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        is_email = User.objects.filter(email=email)
+        if is_email.exists():
+            if cache.get(email,0):
+                return JsonResponse({
+                    'code':1007,
+                    'msg':'180内不能重复发送',
+                })
+            else:
+                send = send_email(email)
+                if send:
+                    return JsonResponse({
+                        'code': 1,
+                        'msg': 'success',
+                    })
+                else:
+                    return JsonResponse({
+                        'code': 1005,
+                        'msg': '服务器正忙'
+                    })
+        else:
+            return JsonResponse({
+                'code': 1004,
+                'msg': '用户未注册',
+            })
+    else:
+        return JsonResponse({
+            'code':1003,
+            'msg':'请求方式错误'
+        })
 
-
-# 通过手机号登录
-def login_for_phone(request):
-    pass
+# 验证邮箱验证码
+def login_mail_captcha(request):
+    if request.method == "POST":
+        captcha = request.POST.get("captcha")
+        try:
+            captcha = int(captcha)
+        except:
+            return JsonResponse({
+                'code': 1001,
+                'msg': '参数错误',
+            })
+        email = request.POST.get('email')
+        cache_captcha = cache.get(email, 0)
+        if int(captcha) == int(cache_captcha):
+            return JsonResponse({
+                'code': 1,
+                'msg': 'success',
+            })
+        else:
+            return JsonResponse({
+                'code': 1006,
+                'msg': '验证码错误',
+            })
+    else:
+        return JsonResponse({
+            'code': 1003,
+            'msg': '请求方式错误',
+        })
 
 # 菜谱列表
 def Menu_list(request):

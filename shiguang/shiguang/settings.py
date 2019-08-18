@@ -151,3 +151,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/uploads')
 #         'KEY_PREFIX': 'QF',  # 前缀
 #     }
 # }
+
+# 邮箱配置
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_HOST_USER = "571498244@qq.com"
+EMAIL_HOST_PASSWORD = 'cribmczucuykbfif'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# EMAIL_USE_SSl = False
