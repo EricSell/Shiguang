@@ -25,6 +25,10 @@ def article_list(request):
 # 文章详情
 def article_detail(request):
     article_id = request.GET.get("article_id")
+    try:
+        article_id = int(article_id)
+    except:
+        return JsonResponse({"code": 1001, "msg": "参数格式错误"})
     article = Article.objects.filter(id=article_id).first()
 
     if article:
@@ -54,9 +58,11 @@ def article_like(request):
     user = request.user
     if not user:
         return JsonResponse({"code": 1002, "msg": "用户未登录"})
-    article_id = request.GET.get('article_id', False)
-    if not article_id:
-        return JsonResponse({"code": 1001, "msg": "参数错误"})
+    article_id = request.GET.get('article_id')
+    try:
+        article_id = int(article_id)
+    except:
+        return JsonResponse({"code": 1001, "msg": "参数格式错误"})
     a_like = ArticleLike.objects.filter(article_id=article_id)
     print(user)
     # 如果喜欢表里面没有数据，就新增
