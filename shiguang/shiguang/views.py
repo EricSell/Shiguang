@@ -37,6 +37,30 @@ def index(request):
                 "url": ip + "/find1/baike_list/",
                 "msg": "百科列表"
             },
+            {
+                "url": ip + "/find2/baikedetail/",
+                "msg": "百科详情"
+            },
+            {
+                "url": ip + "/find2/baikedetaillove/",
+                "msg": "百科详情-喜欢"
+            },
+            {
+                "url": ip + "/find2/baikedetailcollect/",
+                "msg": "百科详情-收藏"
+            },
+            {
+                "url": ip + "/find2/userlist/",
+                "msg": "用户列表"
+            },
+            {
+                "url": ip + "/find2/userdetail/",
+                "msg": "用户详情"
+            },
+            {
+                "url": ip + "/find2/userdetailfollow/",
+                "msg": "用户详情-关注"
+            },
 
         ]
     }
