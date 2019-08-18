@@ -61,6 +61,14 @@ def index(request):
                 "url": ip + "/find2/userdetailfollow/",
                 "msg": "用户详情-关注"
             },
+            {
+                "url": ip + "/mine/sendcode/",
+                "msg": "短信发送验证码"
+            },
+            {
+                "url": ip + "/mine/msg_login/",
+                "msg": "短信验证码登录"
+            },
 
         ]
     }
