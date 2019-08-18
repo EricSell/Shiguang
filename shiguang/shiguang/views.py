@@ -62,8 +62,6 @@ def index(request):
                 "msg": "用户详情-关注"
             },
 
-
-
         ]
     }
     return JsonResponse(data)

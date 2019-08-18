@@ -16,6 +16,10 @@ def menutype_list(request):
 
 def menu_list(request):
     type_id = request.GET.get("type_id")
+    try:
+        type_id = int(type_id)
+    except:
+        return JsonResponse({"code": 1001, "msg": "参数格式错误"})
     type = Menutype.objects.filter(id=type_id).first()
 
     m_list = list(Menu.objects.filter(type_id=type.id).values("id", "name", "img", "user__username", "user__icon"))

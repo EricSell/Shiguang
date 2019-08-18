@@ -7,7 +7,7 @@ from django.db import models
 # 用户表
 class User(models.Model):
     username = models.CharField(max_length=20, verbose_name="昵称")
-    password = models.CharField(max_length=20, verbose_name="密码")
+    password = models.CharField(max_length=255, verbose_name="密码")
     email = models.CharField(max_length=50, unique=True, verbose_name="邮箱")
     phone = models.CharField(max_length=11, unique=True, verbose_name="手机号")
     icon = models.CharField(max_length=255, blank=True, null=True, verbose_name="头像")
