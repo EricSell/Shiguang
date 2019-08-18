@@ -69,6 +69,15 @@ def index(request):
                 "url": ip + "/mine/msg_login/",
                 "msg": "短信验证码登录"
             },
+            {
+                "url": ip + "/index/login_send_email/",
+                "msg": "邮箱发送验证码"
+            },
+            {
+                "url": ip + "/index/login_mail_captcha/",
+                "msg": "邮箱验证码登录"
+            },
+
 
         ]
     }
