@@ -1,6 +1,5 @@
 from django.db import models
 
-
 # Create your models here.
 # 百科表
 from mdeditor.fields import MDTextField
@@ -65,8 +64,7 @@ class Menu(models.Model):
         verbose_name = '菜谱'
         verbose_name_plural = verbose_name
 
-    def __str__(self):
-        return self.name
+
 
 
 # 菜谱喜欢收藏表
