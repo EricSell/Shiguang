@@ -1,8 +1,10 @@
+from django.core.cache import cache
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from find1.models import *
 from index.models import Follow
+from utils.send_msg import send_msg
 from utils.tools import upload_to_ali
 
 
@@ -92,4 +94,46 @@ def change_password(request):
         user.password = new_password
         user.save()
         return JsonResponse({"code": 1, "msg": "密码修改成功"})
+    return JsonResponse({"code": 1003, "msg": "请求方式错误"})
+
+
+# 发送短信
+def send_code(request):
+    if request.method == "POST":
+        phone = request.POST.get("phone")
+        user = User.objects.filter(phone=phone).first()
+        is_timeout = cache.get(phone, 0)
+        if is_timeout == "0":
+            return JsonResponse({"code": -1, "msg": "3分钟之内只能发一次短信"})
+        if not user:
+            return JsonResponse({"code": 1004, "msg": "用户未注册"})
+        status = send_msg(phone)
+        if status:
+            data = {
+                "code": 1,
+                "msg": "短信成功"
+            }
+            return JsonResponse(data)
+        return JsonResponse({"code": 1005, "msg": "服务器正忙，发送失败"})
+    return JsonResponse({"code": 1003, "msg": "请求方式错误"})
+
+
+# 短信登录
+def msg_login(request):
+    if request.method == "POST":
+        phone = request.POST.get("phone")
+        code = request.POST.get("code")
+        user = User.objects.filter(phone=phone).first()
+        cache_code = cache.get(phone, 0)
+        if not user:
+            return JsonResponse({"code": 1004, "msg": "用户未注册"})
+        if code == cache_code:
+            request.session['user_id'] = user.id
+            cache.delete(phone)
+            data = {
+                "code": 1,
+                "msg": "登录成功",
+            }
+            return JsonResponse(data)
+        return JsonResponse({"code": 1006, "msg": "验证码错误"})
     return JsonResponse({"code": 1003, "msg": "请求方式错误"})
