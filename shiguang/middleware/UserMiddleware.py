@@ -6,7 +6,7 @@ from index.models import User
 
 class LoginMiddleware(MiddlewareMixin):
     def process_request(self, request):
-        login_list = ['/mine/mine/', '/mine/changemineinfo/', '/article/articlelike/', '/mine/changepassword/','/find2/baikedetail/',
+        login_list = ['/mine/mine/', '/mine/changemineinfo/', '/article/articlelike/', '/mine/changepassword/',
                       '/find2/baikedetaillove/','/find2/baikedetailcollect/','/find2/userdetail/','/find2/userdetailfollow/']
         if request.path in login_list:
             user_id = request.session.get("user_id", 0)
