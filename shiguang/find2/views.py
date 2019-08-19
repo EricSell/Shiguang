@@ -14,18 +14,6 @@ def baike_detail(request):
             love_sum = baike_love_coll_sum.filter(love=True).count()
             collect_sum = baike_love_coll_sum.filter(collect=True).count()
 
-        # 用户是否关注
-        user = request.user
-        userid = user.id
-        # userid = 4
-        user_love = 0
-        user_collect = 0
-        if userid:
-            user = BaikeShowLike.objects.filter(user_id=userid)
-            if user:
-                user_love = int(user.first().love)
-                user_collect = int(user.first().collect)
-
         # 获取百科详情
         baikes = Baike.objects.filter(id=baikeid)
         if baikes.exists():
@@ -39,8 +27,6 @@ def baike_detail(request):
                 'baike_love': love_sum,
                 'baike_collect': collect_sum,
                 'baike_img': baike_img,
-                'user_love': user_love,
-                'user_collect': user_collect,
             }
             data = {
                 'code': 1,
