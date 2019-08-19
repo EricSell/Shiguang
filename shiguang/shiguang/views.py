@@ -93,6 +93,22 @@ def index(request):
                 "url": ip + "/find1/search/?keywords=蛋",
                 "msg": "搜索"
             },
+            {
+                "url": ip + "/index/menulist",
+                "msg": "首页菜谱列表"
+            },
+            {
+                "url": ip + "/index/Menu_details",
+                "msg": "菜谱详情"
+            },
+            {
+                "url": ip + "/index/clecklive",
+                "msg": "菜谱点击喜欢/取消喜欢"
+            },
+            {
+                "url": ip + "/index/cleckcollect",
+                "msg": "菜谱点击收藏/取消收藏"
+            },
 
         ]
     }
