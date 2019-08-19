@@ -13,8 +13,8 @@ def mine(request):
     # session?
     user = request.user
     if user:
-        menu_list = list(Menu.objects.filter(user=user).values("name", 'img'))
-        like_list = list(Menu.objects.filter(menushoulike__love=True, user=user).values("name", 'img'))
+        menu_list = list(Menu.objects.filter(user=user).values("name", 'img', 'id'))
+        like_list = list(Menu.objects.filter(menushoulike__love=True, user=user).values("name", 'img', 'id'))
         Fan_num = Follow.objects.filter(yid=user.id).count()
         follow_num = Follow.objects.filter(myid=user.id).count()
         data = {
@@ -41,7 +41,8 @@ def change_mine_info(request):
                 "username": user.username,
                 "usericon": user.icon,
                 "email": user.email,
-                "intro": user.intro
+                "intro": user.intro,
+                "phone": user.phone,
             }
             return JsonResponse(data)
         return JsonResponse({
@@ -52,29 +53,34 @@ def change_mine_info(request):
         username = request.POST.get("username")
         email = request.POST.get("email")
         intro = request.POST.get("intro")
-
-        icon = request.FILES.get("icon")
+        phone = request.POST.get("phone")
+        icon = request.FILES.get("icon", 0)
         # 图片上传到云服务器
         try:
             user = request.user
-            status, url_icon = upload_to_ali(icon)
-            if status == 200:
-                user.username = username
-                user.email = email
-                user.intro = intro
-                user.icon = url_icon
-                user.save()
-                data = {
-                    "code": 1,
-                    "msg": "success",
-                    "username": user.username,
-                    "usericon": user.icon,
-                    "email": user.email,
-                    "intro": user.intro
-                }
-                return JsonResponse(data)
+            if icon != 0:
+                status, url_icon = upload_to_ali(icon)
+                if status == 200:
+                    user.icon = url_icon
+                    user.save()
+                return JsonResponse({"code": -1, "msg": "图片上传出错"})
+            user.username = username
+            user.email = email
+            user.intro = intro
+            user.phone = phone
+            user.save()
+            data = {
+                "code": 1,
+                "msg": "success",
+                "username": user.username,
+                "usericon": user.icon,
+                "email": user.email,
+                "intro": user.intro,
+                "phone": phone
+            }
+            return JsonResponse(data)
         except:
-            return JsonResponse({"code": -1, "msg": "修改失败"})
+            return JsonResponse({"code": -1, "msg": "图片上传出错"})
     return JsonResponse({"code": -1, "msg": "请求方式错误"})
 
 
