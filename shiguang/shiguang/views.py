@@ -85,6 +85,14 @@ def index(request):
                 "url": ip + "/index/register/",
                 "msg": "注册"
             },
+            {
+                "url": ip + "/mine/changepassword/",
+                "msg": "更改密码"
+            },
+            {
+                "url": ip + "/find1/search/?keywords=蛋",
+                "msg": "搜索"
+            },
 
         ]
     }

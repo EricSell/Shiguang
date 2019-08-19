@@ -8,4 +8,5 @@ urlpatterns = [
     path("menutypelist/", views.menutype_list),
     path("menulist/", views.menu_list),
     path("baikelist/", views.baike_list),
+    path("search/", views.search),
 ]
