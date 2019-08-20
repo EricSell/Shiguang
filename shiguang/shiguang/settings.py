@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'article',
     'mine',
 
-    'mdeditor',
+    'DjangoUeditor',
 ]
 
 MIDDLEWARE = [
