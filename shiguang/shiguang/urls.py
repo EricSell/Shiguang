@@ -20,6 +20,10 @@ from django.conf import settings
 from django.views.static import serve
 from shiguang import views
 
+
+handler404 = "shiguang.views.page_not_found"
+handler500 = "shiguang.views.page_error"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
