@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from django.conf import settings
-
+from django.views.static import serve
 from shiguang import views
 
 urlpatterns = [
@@ -31,12 +31,10 @@ urlpatterns = [
 
     path("", views.index),
 
-    re_path(r'mdeditor/', include('mdeditor.urls')),
+    path('ueditor/', include('DjangoUeditor.urls')),  # 添加DjangoUeditor的URL
+    re_path('^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),#增加此行
+
 ]
 
 # 部署的时候收集静态文件
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-if settings.DEBUG:
-    # static files (images, css, javascript, etc.)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

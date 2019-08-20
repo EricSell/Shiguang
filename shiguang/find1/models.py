@@ -2,14 +2,18 @@ from django.db import models
 
 # Create your models here.
 # 百科表
-from mdeditor.fields import MDTextField
 
+from DjangoUeditor.models import UEditorField
 from index.models import User
 
 
 class Baike(models.Model):
     name = models.CharField(max_length=20, verbose_name="百科名")
-    content = MDTextField(verbose_name="内容")
+    content = UEditorField('内容', width=800, height=500,
+                    toolbars="full", imagePath="upimg/", filePath="upfile/",
+                    upload_settings={"imageMaxSize": 1204000},
+                    settings={}, command=None, blank=True
+                    )
     img = models.CharField(max_length=255, verbose_name="百科图片", default="")
     user = models.ForeignKey(User, models.DO_NOTHING, verbose_name="用户")
 
@@ -52,7 +56,11 @@ class Foodtype(models.Model):
 # 菜谱
 class Menu(models.Model):
     name = models.CharField(max_length=30, verbose_name="菜谱名")
-    content = MDTextField(verbose_name="内容")
+    content = UEditorField('内容', width=800, height=500,
+                    toolbars="full", imagePath="upimg/", filePath="upfile/",
+                    upload_settings={"imageMaxSize": 1204000},
+                    settings={}, command=None, blank=True
+                    )
     descript = models.CharField(max_length=200, verbose_name="描述")
     img = models.CharField(max_length=255, blank=True, null=True, verbose_name="图片")
     time = models.TimeField(auto_now_add=True, verbose_name="时间")
