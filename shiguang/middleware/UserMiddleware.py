@@ -19,3 +19,6 @@ class LoginMiddleware(MiddlewareMixin):
                     'msg': "用户未登录"
                 }
                 return JsonResponse(data)
+
+    def process_exception(self, exception):
+        return JsonResponse({"code": -1, "msg": "别乱搞，请查看详细的api文档"})

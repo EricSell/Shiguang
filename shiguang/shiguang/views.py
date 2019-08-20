@@ -98,7 +98,7 @@ def index(request):
                 "msg": "首页菜谱列表"
             },
             {
-                "url": ip + "/index/Menu_details",
+                "url": ip + "/index/menudetails",
                 "msg": "菜谱详情"
             },
             {
@@ -113,3 +113,11 @@ def index(request):
         ]
     }
     return JsonResponse(data)
+
+
+def page_not_found(request, exception):
+    return JsonResponse({"code": -1, "msg": "请仔细看api操作"})
+
+
+def page_error(request):
+    return JsonResponse({"code": -1, "msg": "操作异常请别乱搞"})
